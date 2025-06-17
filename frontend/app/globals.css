@@ -1,0 +1,75 @@
+/* File: app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy: #1a2238;
+    --charcoal: #2c2f3a;
+    --neon-green: #39ff14;
+    --electric-purple: #bf40bf;
+  }
+}
+
+@layer utilities {
+  .font-orbitron {
+    font-family: "Orbitron", monospace;
+  }
+  .font-inter {
+    font-family: "Inter", sans-serif;
+  }
+}
+
+/* Custom Animations */
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(10px, 10px); }
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-drift { animation: drift 10s linear infinite; }
+.animate-spin-slow { animation: spin-slow 5s linear infinite; }
+.animate-pulse-custom { animation: pulse 1s infinite; }
+.animate-shake { animation: shake 0.3s ease-in-out; }
+.animate-fade-in { animation: fade-in 0.3s ease-in; }
+.animate-slide-in { animation: slide-in 0.3s ease-in; }
+
+/* Particle Effects */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #39ff14;
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.particle:nth-child(odd) { animation: drift 10s linear infinite; }
+.particle:nth-child(even) { animation: drift 15s linear infinite reverse; }

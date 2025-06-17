@@ -1,6 +1,6 @@
 // File: scripts/verify.js
 async function main() {
-  const marketAddress = "0x0c47D57113F74D4dd4c46ED35D932FFBdF804C36"; // Replace with actual address
+  const marketAddress = "0x0c47D57113F74D4dd4c46ED35D932FFBdF804C36"; 
   const market = await ethers.getContractAt("BettingMarket", marketAddress);
 
   console.log("Question:", await market.question());
