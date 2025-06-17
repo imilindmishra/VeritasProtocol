@@ -1,75 +1,44 @@
-/* File: app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --navy: #1a2238;
-    --charcoal: #2c2f3a;
-    --neon-green: #39ff14;
-    --electric-purple: #bf40bf;
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-navy-dark text-white;
   }
 }
 
-@layer utilities {
-  .font-orbitron {
-    font-family: "Orbitron", monospace;
+@layer components {
+  .glow-button {
+    @apply transition-all duration-300 ease-in-out;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
   }
-  .font-inter {
-    font-family: "Inter", sans-serif;
+
+  .glow-button:hover {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+    transform: translateY(-1px);
+  }
+
+  .glow-button-purple {
+    @apply transition-all duration-300 ease-in-out;
+    box-shadow: 0 0 10px rgba(191, 64, 191, 0.3);
+  }
+
+  .glow-button-purple:hover {
+    box-shadow: 0 0 20px rgba(191, 64, 191, 0.6);
+    transform: translateY(-1px);
+  }
+
+  .card-glow {
+    @apply transition-all duration-300 ease-in-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-glow:hover {
+    box-shadow: 0 8px 30px rgba(57, 255, 20, 0.1);
+    transform: translateY(-2px);
   }
 }
-
-/* Custom Animations */
-@keyframes drift {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(10px, 10px); }
-}
-
-@keyframes spin-slow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-4px); }
-  75% { transform: translateX(4px); }
-}
-
-@keyframes fade-in {
-  0% { opacity: 0; transform: translateY(16px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slide-in {
-  0% { opacity: 0; transform: translateY(16px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.animate-drift { animation: drift 10s linear infinite; }
-.animate-spin-slow { animation: spin-slow 5s linear infinite; }
-.animate-pulse-custom { animation: pulse 1s infinite; }
-.animate-shake { animation: shake 0.3s ease-in-out; }
-.animate-fade-in { animation: fade-in 0.3s ease-in; }
-.animate-slide-in { animation: slide-in 0.3s ease-in; }
-
-/* Particle Effects */
-.particle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #39ff14;
-  border-radius: 50%;
-  opacity: 0.1;
-  pointer-events: none;
-}
-
-.particle:nth-child(odd) { animation: drift 10s linear infinite; }
-.particle:nth-child(even) { animation: drift 15s linear infinite reverse; }
