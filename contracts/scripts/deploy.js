@@ -1,16 +1,15 @@
-// File: scripts/deploy.js
 async function main() {
   const [deployer] = await ethers.getSigners();
-  console.log("Deploying with account:", deployer.address);
 
-  const BettingMarket = await ethers.getContractFactory("BettingMarket");
-  const question = "Will BTC hit $100K by Q4 2025?";
-  const deadline = Math.floor(Date.now() / 1000) + 86400; // 1 day from now
-  const market = await BettingMarket.deploy(question, deadline);
-  await market.waitForDeployment(); // Wait for deployment
+  console.log("Deploying MarketFactory with the account:", deployer.address);
 
-  const address = await market.getAddress(); // Get contract address
-  console.log("BettingMarket deployed to:", address);
+  const MarketFactory = await ethers.getContractFactory("MarketFactory");
+  const factory = await MarketFactory.deploy();
+
+  await factory.waitForDeployment();
+
+  const address = await factory.getAddress();
+  console.log("MarketFactory deployed to:", address);
 }
 
 main()
